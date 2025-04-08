@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: diplomado-example
+  labels:
+    app: diplomado-example
+spec:
+  type: ClusterIP
+  selector:
+    app: diplomado-example
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

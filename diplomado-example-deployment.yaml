@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diplomado-example
+  labels:
+    app: diplomado-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: diplomado-example
+  template:
+    metadata:
+      labels:
+        app: diplomado-example
+    spec:
+      containers:
+      - name: diplomado-example
+        image: danielsabana/diplomado-example:2.0.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "00m"
+            memory: "300Mi"
+          limits:
+            cpu: "800m"
+            memory: "1Gi"
+        startupProbe: #Para arrancar, si arranco??
+          httpGet:
+            path: "/saludo"
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe: #Probar que esta funcionando bien.
+          httpGet:
+            path: "/despedirse"
+            port: 8080
+          periodSeconds: 5
