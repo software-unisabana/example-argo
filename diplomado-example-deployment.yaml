@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: diplomado-example
-        image: danielsabana/diplomado-example:3.0.0
+        image: danielsabana/diplomado-example:1.0.0
         ports:
         - containerPort: 8080
         resources:
